@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApiTabelaFipe.Domain.IRepository
 {
-    public class IModeloRepository
+    public interface IModeloRepository
     {
     }
 }
