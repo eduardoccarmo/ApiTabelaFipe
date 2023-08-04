@@ -1,16 +1,9 @@
 ﻿using ApiTabelaFipe.Domain.Models;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace ApiTabelaFipe.Infra.Network
 {
-    internal class HttpServiceFipe : IHttpServiceFipe
+    public class HttpServiceFipe : IHttpServiceFipe
     {
         private readonly HttpClient _httpClient;
 

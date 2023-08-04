@@ -1,4 +1,9 @@
+using ApiTabelaFipe.IoC;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.ApplicationServiceRepository();
+builder.Services.ApplicationService();
 
 // Add services to the container.
 
