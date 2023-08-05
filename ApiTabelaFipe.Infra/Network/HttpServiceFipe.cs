@@ -15,7 +15,7 @@ namespace ApiTabelaFipe.Infra.Network
 
         public async Task<List<Marca>> ObterTodasAsMarcas()
         {
-            using (var response = await _httpClient.GetAsync("carros/marcas"))
+            using (var response = await _httpClient.GetAsync("caminhoes/marcas"))
             {
                 var result = await response.Content.ReadAsStringAsync();
 
