@@ -1,4 +1,7 @@
 ﻿using ApiTabelaFipe.Domain.IRepository;
+using ApiTabelaFipe.Domain.Models;
+using ApiTabelaFipe.Infra.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +12,27 @@ namespace ApiTabelaFipe.Infra.Repository
 {
     public class MarcaRepository : IMarcaRepository
     {
+        private readonly ApiContext _context;
+
+        public MarcaRepository(ApiContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<List<Marca>> AddMarcas(List<Marca> marcas)
+        {
+            try
+            {
+                await _context.Marcas.AddRangeAsync(marcas);
+
+                await _context.SaveChangesAsync();
+
+                return marcas;
+            }
+            catch (DbUpdateException)
+            {
+                throw new DbUpdateException(message: "Occoreu um erro ao inserir os registros no banco de dados.");
+            }
+        }
     }
 }

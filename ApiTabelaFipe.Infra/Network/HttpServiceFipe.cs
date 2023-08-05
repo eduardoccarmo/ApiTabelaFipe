@@ -13,7 +13,7 @@ namespace ApiTabelaFipe.Infra.Network
             _httpClient.BaseAddress = new Uri("https://parallelum.com.br/fipe/api/v1/");
         }
 
-        public async Task<IEnumerable<Marca>> ObterTodasAsMarcas()
+        public async Task<List<Marca>> ObterTodasAsMarcas()
         {
             using (var response = await _httpClient.GetAsync("carros/marcas"))
             {

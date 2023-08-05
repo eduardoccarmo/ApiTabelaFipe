@@ -10,6 +10,6 @@ namespace ApiTabelaFipe.Infra.Network
 {
     public interface IHttpServiceFipe
     {
-        Task<IEnumerable<Marca>> ObterTodasAsMarcas(); 
+        Task<List<Marca>> ObterTodasAsMarcas(); 
     }
 }

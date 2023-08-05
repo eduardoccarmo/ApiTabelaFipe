@@ -12,11 +12,6 @@ namespace ApiTabelaFipe.Domain.Models
 
         public string? Nome { get; set; }
 
-        public IList<Modelo> Modelo { get; set; }
-
-        public Marca()
-        {
-            Modelo = new List<Modelo>();
-        }
+        //public IList<Modelo> Modelo { get; set; }
     }
 }
