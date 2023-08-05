@@ -9,9 +9,8 @@ namespace ApiTabelaFipe.Infra.Network
 
         public HttpServiceFipe(HttpClient httpClient)
         {
-
-            _httpClient.BaseAddress = new Uri("https://parallelum.com.br/fipe/api/v1/");
             _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri("https://parallelum.com.br/fipe/api/v1/");
         }
 
         public async Task<IEnumerable<Marca>> ObterTodasAsMarcas()
@@ -26,6 +25,7 @@ namespace ApiTabelaFipe.Infra.Network
 
                     return marcas;
                 }
+                
                 return null;
             }
         }

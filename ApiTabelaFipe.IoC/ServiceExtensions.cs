@@ -17,7 +17,7 @@ namespace ApiTabelaFipe.IoC
 
         public static IServiceCollection ApplicationService(this IServiceCollection services)
         { 
-            //services.http<IHttpServiceFipe, HttpServiceFipe>();
+            services.AddHttpClient<IHttpServiceFipe, HttpServiceFipe>();
             return services;
         }
     }

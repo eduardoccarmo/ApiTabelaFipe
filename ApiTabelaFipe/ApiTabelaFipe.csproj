@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApiTabelaFipe.Aplication\ApiTabelaFipe.Aplication.csproj" />
+    <ProjectReference Include="..\ApiTabelaFipe.Infra\ApiTabelaFipe.Infra.csproj" />
     <ProjectReference Include="..\ApiTabelaFipe.IoC\ApiTabelaFipe.IoC.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
 ﻿using ApiTabelaFipe.Domain.Models;
+using ApiTabelaFipe.Infra.Network;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,18 +12,18 @@ namespace ApiTabelaFipe.Controllers
     [ApiController]
     public class MarcaController : ControllerBase
     {
+        private readonly IHttpServiceFipe _httpServiceFipe;
+
+        public MarcaController(IHttpServiceFipe httpServiceFipe)
+        {
+            _httpServiceFipe = httpServiceFipe;
+        }
+
         [HttpGet]
         [Route("GetMarcasAsync")]
         public async Task<IActionResult> Teste()
         {
-            HttpClient client = new HttpClient { BaseAddress = new Uri("https://parallelum.com.br/fipe/api/v1/") };
-
-            var response = await client.GetAsync("carros/marcas");
-
-            var content = await response.Content.ReadAsStringAsync();
-
-            var marcas = JsonConvert.DeserializeObject<List<Marca>>(content);
-
+            var marcas = await _httpServiceFipe.ObterTodasAsMarcas();
             return Ok(marcas);
         }
     }
