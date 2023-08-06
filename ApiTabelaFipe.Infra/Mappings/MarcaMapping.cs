@@ -12,11 +12,21 @@ namespace ApiTabelaFipe.Infra.Mappings
 
             builder.HasKey(x => x.Codigo);
 
+            builder.Property(x => x.Codigo)
+                .IsRequired()
+                .ValueGeneratedOnAdd()
+                .UseMySqlIdentityColumn();
+
             builder.Property(x => x.Nome)
                 .HasColumnName("DESCRICAO")
                 .HasColumnType("VARCHAR2")
                 .HasMaxLength(200)
-                .IsRequired(); 
+                .IsRequired();
+
+            builder.HasMany(x => x.Modelo)
+                .WithOne(x => x.Marca)
+                .OnDelete(DeleteBehavior.SetNull);
+
         }
     }
 }

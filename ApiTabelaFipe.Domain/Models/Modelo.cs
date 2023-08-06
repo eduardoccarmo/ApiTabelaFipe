@@ -11,5 +11,7 @@ namespace ApiTabelaFipe.Domain.Models
         public long Codigo { get; set; }
 
         public string? Nome { get; set; }
+
+        public Marca? Marca { get; set; }
     }
 }

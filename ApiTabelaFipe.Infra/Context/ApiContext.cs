@@ -8,7 +8,7 @@ namespace ApiTabelaFipe.Infra.Context
     public class ApiContext : DbContext
     {
         public DbSet<Marca> Marcas { get; set; }
-        //public DbSet<Modelo> Modelos { get; set; }
+        public DbSet<Modelo> Modelos { get; set; }
 
         private readonly string _connectionString = "Server=localhost;Port=3306;Database=fipe;Uid=root;Pwd=root;";
 
