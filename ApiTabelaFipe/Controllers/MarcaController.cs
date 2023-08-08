@@ -1,4 +1,5 @@
-﻿using ApiTabelaFipe.Domain.IRepository;
+﻿using ApiTabelaFipe.Aplication.Interfaces;
+using ApiTabelaFipe.Domain.IRepository;
 using ApiTabelaFipe.Domain.Models;
 using ApiTabelaFipe.Infra.Network;
 using Microsoft.AspNetCore.Http;
@@ -16,29 +17,27 @@ namespace ApiTabelaFipe.Controllers
     {
         private readonly IHttpServiceFipe _httpServiceFipe;
         private readonly IMarcaRepository _marcaRepository;
+        private readonly IMarcaService _marcaService;
 
-        public MarcaController(IHttpServiceFipe httpServiceFipe, IMarcaRepository marcaRepository)
+        public MarcaController(IHttpServiceFipe httpServiceFipe,
+                               IMarcaRepository marcaRepository,
+                               IMarcaService marcaService)
         {
             _httpServiceFipe = httpServiceFipe;
             _marcaRepository = marcaRepository;
+            _marcaService = marcaService;
         }
 
         [HttpGet]
         [Route("GetMarcasAsync")]
         public async Task<IActionResult> Teste()
         {
-            try
-            {
-                var marcas = await _httpServiceFipe.ObterTodasAsMarcas();
+            var ret = await _marcaService.InserirMarcas();
 
-                await _marcaRepository.AddMarcas(marcas);
+            if (ret is not null)
+                return Ok(ret);
 
-                return Ok(marcas);
-            }
-            catch(DbUpdateException ex)
-            {
-                return BadRequest(ex.Message); 
-            }
+            return BadRequest();
         }
     }
 }

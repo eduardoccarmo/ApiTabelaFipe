@@ -23,9 +23,9 @@ namespace ApiTabelaFipe.Infra.Mappings
                 .HasMaxLength(200)
                 .IsRequired();
 
-            builder.HasMany(x => x.Modelo)
-                .WithOne(x => x.Marca)
-                .OnDelete(DeleteBehavior.SetNull);
+            //builder.HasMany(x => x.Modelo)
+            //    .WithOne(x => x.Marca)
+            //    .OnDelete(DeleteBehavior.SetNull);
 
         }
     }

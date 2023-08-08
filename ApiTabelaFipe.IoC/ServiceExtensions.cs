@@ -1,8 +1,10 @@
-﻿using ApiTabelaFipe.Domain.IRepository;
+﻿using ApiTabelaFipe.Aplication.Interfaces;
+using ApiTabelaFipe.Domain.IRepository;
 using ApiTabelaFipe.Infra.Context;
 using ApiTabelaFipe.Infra.Network;
 using ApiTabelaFipe.Infra.Repository;
 using Microsoft.Extensions.DependencyInjection;
+using ApiTabelaFipe.Aplication.Services;
 
 namespace ApiTabelaFipe.IoC
 {
@@ -18,6 +20,7 @@ namespace ApiTabelaFipe.IoC
         public static IServiceCollection ApplicationService(this IServiceCollection services)
         { 
             services.AddHttpClient<IHttpServiceFipe, HttpServiceFipe>();
+            services.AddScoped<IMarcaService, MarcaService>();
             return services;
         }
     }

@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiTabelaFipe.Aplication\ApiTabelaFipe.Aplication.csproj" />
     <ProjectReference Include="..\ApiTabelaFipe.Domain\ApiTabelaFipe.Domain.csproj" />
     <ProjectReference Include="..\ApiTabelaFipe.Infra\ApiTabelaFipe.Infra.csproj" />	
   </ItemGroup>

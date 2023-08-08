@@ -12,6 +12,6 @@ namespace ApiTabelaFipe.Domain.Models
 
         public string? Nome { get; set; }
 
-        public Marca? Marca { get; set; }
+        //public Marca? Marca { get; set; }
     }
 }

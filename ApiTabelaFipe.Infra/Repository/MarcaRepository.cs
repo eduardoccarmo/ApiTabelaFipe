@@ -23,9 +23,9 @@ namespace ApiTabelaFipe.Infra.Repository
         {
             try
             {
-                await _context.Marcas.AddRangeAsync(marcas);
 
-                await _context.SaveChangesAsync();
+                _context.Marcas.AddRange(marcas);
+                var ret = await _context.SaveChangesAsync();
 
                 return marcas;
             }
@@ -33,6 +33,16 @@ namespace ApiTabelaFipe.Infra.Repository
             {
                 throw new DbUpdateException(message: "Occoreu um erro ao inserir os registros no banco de dados.");
             }
+        }
+
+        public async Task<List<Marca>> ObterMarcas()
+        {
+            var marcas = await _context
+                               .Marcas
+                               .AsNoTracking()
+                               .ToListAsync();
+
+            return marcas; 
         }
     }
 }

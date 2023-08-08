@@ -12,5 +12,7 @@ namespace ApiTabelaFipe.Aplication.Interfaces
         Task<List<Marca>> ObterMarcas();
 
         Task<List<Marca>> InserirMarcas(List<Marca> marcas);
+
+        Task<List<Marca>> InserirMarcas();
     }
 }

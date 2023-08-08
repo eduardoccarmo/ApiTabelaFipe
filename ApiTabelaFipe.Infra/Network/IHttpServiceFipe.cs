@@ -1,4 +1,5 @@
 ﻿using ApiTabelaFipe.Domain.Models;
+using Microsoft.Extensions.Logging;
 using Pomelo.EntityFrameworkCore.MySql.Query.Internal;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace ApiTabelaFipe.Infra.Network
 {
     public interface IHttpServiceFipe
     {
-        Task<List<Marca>> ObterTodasAsMarcas(); 
+        Task<List<Marca>> ObterTodasAsMarcas();
     }
 }

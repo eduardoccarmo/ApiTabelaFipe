@@ -9,7 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ApiTabelaFipe.Domain\ApiTabelaFipe.Domain.csproj" />
     <ProjectReference Include="..\ApiTabelaFipe.Infra\ApiTabelaFipe.Infra.csproj" />
-    <ProjectReference Include="..\ApiTabelaFipe.IoC\ApiTabelaFipe.IoC.csproj" />
   </ItemGroup>
 
 </Project>
