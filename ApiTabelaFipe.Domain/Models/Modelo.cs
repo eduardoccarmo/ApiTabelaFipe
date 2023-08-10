@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ApiTabelaFipe.Domain.Models
+﻿namespace ApiTabelaFipe.Domain.Models
 {
     public class Modelo
     {
@@ -12,6 +6,6 @@ namespace ApiTabelaFipe.Domain.Models
 
         public string? Nome { get; set; }
 
-        //public Marca? Marca { get; set; }
+        public Marca? Marca { get; set; }
     }
 }
