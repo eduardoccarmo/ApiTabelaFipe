@@ -2,13 +2,14 @@
 using ApiTabelaFipe.Domain.IRepository;
 using ApiTabelaFipe.Domain.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System.Xml.Linq;
 
 namespace ApiTabelaFipe.Aplication.Services
 {
     public class MarcaService : IMarcaService
     {
         private readonly IMarcaRepository _marcaRepository;
-        
+
         public MarcaService(IMarcaRepository repository)
         {
             _marcaRepository = repository;
@@ -24,7 +25,9 @@ namespace ApiTabelaFipe.Aplication.Services
 
             var newMarcas = new List<Marca>();
 
-            foreach(var f in file)
+            var registrosDuplicados = new List<Marca>();
+
+            foreach (var f in file)
             {
                 text = f.Split(';');
 
@@ -33,22 +36,28 @@ namespace ApiTabelaFipe.Aplication.Services
                     {
                         Codigo = int.Parse(text[0]),
                         Nome = text[1].ToString()
-                    }) ;
+                    });
             }
 
-            var marcasCadastradas = await _marcaRepository.ObterMarcas();
+            var marcasRegistradasNoBanco = await _marcaRepository.ObterMarcas();
 
-            foreach (var marca in newMarcas)
+            foreach (var marca in marcasRegistradasNoBanco)
             {
-                var existeMarca = marcasCadastradas.FirstOrDefault(x => x.Codigo == marca.Codigo);
+                var existeCadastro = newMarcas.FirstOrDefault(x => x.Codigo == marca.Codigo);
 
-                if (existeMarca is not null)
+                if (existeCadastro is not null)
                 {
-                    newMarcas.Remove(existeMarca);
+                    registrosDuplicados.Add(new Marca
+                    {
+                        Codigo = existeCadastro.Codigo,
+                        Nome = existeCadastro.Nome
+                    });
                 }
             }
 
-            var ret = await _marcaRepository.AddMarcas(newMarcas);
+        var newList = newMarcas.Except(registrosDuplicados).ToList();
+
+        var ret = await _marcaRepository.AddMarcas(newList);
 
             if (ret is not null)
                 return ret;
@@ -56,14 +65,14 @@ namespace ApiTabelaFipe.Aplication.Services
             return null;
         }
 
-        public Task<List<Marca>> InserirMarcas(List<Marca> marcas)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Marca>> ObterMarcas()
-        {
-            throw new NotImplementedException();
-        }
+    public Task<List<Marca>> InserirMarcas(List<Marca> marcas)
+    {
+        throw new NotImplementedException();
     }
+
+    public Task<List<Marca>> ObterMarcas()
+    {
+        throw new NotImplementedException();
+    }
+}
 }

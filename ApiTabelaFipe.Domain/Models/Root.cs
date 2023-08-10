@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ApiTabelaFipe.Domain.Models
 {
-    public class Marca
+    public class Root
     {
-        public int Codigo { get; set; }
-        public string? Nome { get; set; }
+        public List<Modelo>? modelos { get; set; }
+        public List<Ano>? anos { get; set; }
     }
+
 }

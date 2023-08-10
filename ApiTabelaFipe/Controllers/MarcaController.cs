@@ -32,7 +32,7 @@ namespace ApiTabelaFipe.Controllers
         [Route("GetMarcasAsync")]
         public async Task<IActionResult> Teste()
         {
-            var ret = await _marcaService.InserirMarcas();
+            var ret = await _httpServiceFipe.ObterModeloPorMarca(59);
 
             if (ret is not null)
                 return Ok(ret);

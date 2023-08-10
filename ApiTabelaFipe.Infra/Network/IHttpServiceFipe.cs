@@ -12,5 +12,7 @@ namespace ApiTabelaFipe.Infra.Network
     public interface IHttpServiceFipe
     {
         Task<List<Marca>> ObterTodasAsMarcas();
+
+        Task<List<Modelo>> ObterModeloPorMarca(int marca); 
     }
 }
