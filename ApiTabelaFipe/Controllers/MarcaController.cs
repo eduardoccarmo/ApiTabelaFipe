@@ -1,13 +1,7 @@
 ﻿using ApiTabelaFipe.Aplication.Interfaces;
 using ApiTabelaFipe.Domain.IRepository;
-using ApiTabelaFipe.Domain.Models;
 using ApiTabelaFipe.Infra.Network;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using System.Text.Json.Serialization;
 
 namespace ApiTabelaFipe.Controllers
 {
@@ -18,14 +12,17 @@ namespace ApiTabelaFipe.Controllers
         private readonly IHttpServiceFipe _httpServiceFipe;
         private readonly IMarcaRepository _marcaRepository;
         private readonly IMarcaService _marcaService;
+        private readonly IModeloRepository _modeloRepository;
 
         public MarcaController(IHttpServiceFipe httpServiceFipe,
                                IMarcaRepository marcaRepository,
-                               IMarcaService marcaService)
+                               IMarcaService marcaService,
+                               IModeloRepository modeloRepository)
         {
             _httpServiceFipe = httpServiceFipe;
             _marcaRepository = marcaRepository;
             _marcaService = marcaService;
+            _modeloRepository = modeloRepository;
         }
 
         [HttpGet]
@@ -34,8 +31,11 @@ namespace ApiTabelaFipe.Controllers
         {
             var ret = await _httpServiceFipe.ObterModeloPorMarca(59);
 
-            if (ret is not null)
-                return Ok(ret);
+            var modelos = _modeloRepository.InserirModelos(ret);
+
+            if (modelos is not null)
+                
+                return Ok(modelos);
 
             return BadRequest();
         }

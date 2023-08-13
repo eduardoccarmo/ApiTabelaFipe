@@ -6,6 +6,8 @@
 
         public string? Nome { get; set; }
 
-        public Marca? Marca { get; set; }
+        public virtual int MarcaCodigo { get; set; }
+
+        public virtual Marca? Marca { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace ApiTabelaFipe.IoC
         {
             services.AddDbContext<ApiContext>();
             services.AddScoped<IMarcaRepository, MarcaRepository>();
+            services.AddScoped<IModeloRepository, ModeloRepository>();
             return services;
         }
 

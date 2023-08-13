@@ -29,8 +29,16 @@ namespace ApiTabelaFipe.Infra.Network
                         var rootModelos = JsonConvert.DeserializeObject<Root>(result);
 
                         foreach (var modelo in rootModelos.modelos)
-                            modelos.Add(modelo);
+                        {
+                            modelo.MarcaCodigo = 59;
 
+                            modelos.Add(new Modelo
+                            {
+                                Codigo = modelo.Codigo,
+                                Nome = modelo.Nome,
+                                MarcaCodigo = modelo.MarcaCodigo
+                            });
+                        }
                         return modelos;
                     };
                 }

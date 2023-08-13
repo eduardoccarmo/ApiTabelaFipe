@@ -16,6 +16,17 @@ namespace ApiTabelaFipe.Infra.Mappings
                 .IsRequired()
                 .ValueGeneratedOnAdd()
                 .UseMySqlIdentityColumn();
+
+            builder.Property(x => x.Nome)
+                .HasColumnName("DESCRICAO");
+
+            builder.Property(x => x.MarcaCodigo)
+                .HasColumnName("MARCA_CODIGO");
+
+            builder.HasOne(x => x.Marca)
+               .WithMany(x => x.Modelos)
+               .HasForeignKey(x => x.MarcaCodigo)
+               .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
