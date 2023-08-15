@@ -28,5 +28,18 @@ namespace ApiTabelaFipe.Infra.Repository
                 throw new DbUpdateException(message: ex.Message);
             }           
         }
+
+        public async Task<IEnumerable<Modelo>> ObterModeloPorMarca(int codigoMarca)
+        {
+            var modelos = new List<Modelo>();
+
+            modelos = await _context
+                            .Modelos
+                            .AsNoTracking()
+                            .Include(x => x.Marca)
+                            .ToListAsync();
+
+            return modelos;
+        }
     }
 }

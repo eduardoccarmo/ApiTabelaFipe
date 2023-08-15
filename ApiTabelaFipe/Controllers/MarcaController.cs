@@ -33,11 +33,11 @@ namespace ApiTabelaFipe.Controllers
 
             //var modelos = _modeloRepository.InserirModelos(ret);
 
-            var marcas = await _httpServiceFipe.ObterTodasAsMarcas();
+            var modelos = await _modeloRepository.ObterModeloPorMarca(59);
 
-            if (marcas is not null)
+            if (modelos is not null)
                 
-                return Ok(marcas);
+                return Ok(modelos);
 
             return BadRequest();
         }
