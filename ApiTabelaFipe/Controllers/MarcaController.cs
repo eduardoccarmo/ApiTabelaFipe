@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApiTabelaFipe.Controllers
 {
-    [Route("api/Marca")]
+    [Route("v1/ApiFipe")]
     [ApiController]
     public class MarcaController : ControllerBase
     {
@@ -26,18 +26,19 @@ namespace ApiTabelaFipe.Controllers
         }
 
         [HttpGet]
-        [Route("GetMarcasAsync")]
+        [Route("v1/GetMarcasAsync")]
         public async Task<IActionResult> Teste()
         {
-            //var ret = await _httpServiceFipe.ObterModeloPorMarca(59);
+            //var marcas = await _httpServiceFipe.ObterTodasAsMarcas();
 
-            //var modelos = _modeloRepository.InserirModelos(ret);
+            //var ret = await _marcaRepository.AddMarcas(marcas);
 
-            var modelos = await _modeloRepository.ObterModeloPorMarca(59);
+            //var modelos = await _httpServiceFipe.ObterModeloPorMarca(25);
 
-            if (modelos is not null)
-                
-                return Ok(modelos);
+            var ret2 = await _modeloRepository.ObterModeloPorMarca(25);
+
+            if (ret2 is not null)
+                return Ok(ret2);
 
             return BadRequest();
         }

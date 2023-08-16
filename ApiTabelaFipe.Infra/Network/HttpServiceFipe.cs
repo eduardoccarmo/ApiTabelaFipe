@@ -30,7 +30,7 @@ namespace ApiTabelaFipe.Infra.Network
 
                         foreach (var modelo in rootModelos.modelos)
                         {
-                            modelo.MarcaCodigo = 59;
+                            modelo.MarcaCodigo = marca;
 
                             modelos.Add(new Modelo
                             {
@@ -49,7 +49,7 @@ namespace ApiTabelaFipe.Infra.Network
 
         public async Task<List<Marca>> ObterTodasAsMarcas()
         {
-            using (var response = await _httpClient.GetAsync("caminhoes/marcas"))
+            using (var response = await _httpClient.GetAsync("motos/marcas"))
             {
                 var result = await response.Content.ReadAsStringAsync();
 
