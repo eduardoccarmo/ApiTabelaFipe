@@ -29,7 +29,9 @@ namespace ApiTabelaFipe.Controllers
         [Route("/GetMarcasAsync")]
         public async Task<IActionResult> GetMarcasAsync()
         {
-            return Ok();
+            var ret = await _marcaRepository.ObterModelos(25);
+
+            return Ok(ret);
         }
     }
 }

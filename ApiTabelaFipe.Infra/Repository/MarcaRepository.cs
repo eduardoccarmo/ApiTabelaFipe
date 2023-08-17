@@ -40,14 +40,15 @@ namespace ApiTabelaFipe.Infra.Repository
             return marcas; 
         }
 
-        public async Task<Marca> ObterModelos(int codMarca)
+        public async Task<Object> ObterModelos(int codMarca)
         {
-            var marca = await _context
+             var marca =  await _context
                 .Marcas
                 .Include(x => x.Modelos)
+                .Select(x => new {x.Codigo, x.Modelos})
                 .FirstOrDefaultAsync(x => x.Codigo == codMarca);
-
-            return marca;        
+           
+            return marca;
         }
     }
 }
