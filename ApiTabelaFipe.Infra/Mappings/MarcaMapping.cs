@@ -22,6 +22,10 @@ namespace ApiTabelaFipe.Infra.Mappings
                 .HasColumnType("VARCHAR2")
                 .HasMaxLength(200)
                 .IsRequired();
+
+            builder.HasMany(x => x.Modelos)
+                .WithOne(x => x.Marca)
+                .HasForeignKey(x => x.MarcaCodigo);
         }
     }
 }

@@ -2,11 +2,6 @@
 using ApiTabelaFipe.Domain.Models;
 using ApiTabelaFipe.Infra.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApiTabelaFipe.Infra.Repository
 {
@@ -43,6 +38,16 @@ namespace ApiTabelaFipe.Infra.Repository
                                .ToListAsync();
 
             return marcas; 
+        }
+
+        public async Task<Marca> ObterModelos(int codMarca)
+        {
+            var marca = await _context
+                .Marcas
+                .Include(x => x.Modelos)
+                .FirstOrDefaultAsync(x => x.Codigo == codMarca);
+
+            return marca;        
         }
     }
 }

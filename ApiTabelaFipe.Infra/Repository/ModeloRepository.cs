@@ -35,10 +35,10 @@ namespace ApiTabelaFipe.Infra.Repository
 
             modelos = await _context
                             .Modelos
-                            .AsNoTracking()
                             .Include(x => x.Marca)
+                            .ThenInclude(x => x.Modelos)
+                            .Where(x => x.Marca.Codigo == codigoMarca)
                             .ToListAsync();
-
             return modelos;
         }
     }

@@ -7,6 +7,8 @@ namespace ApiTabelaFipe.Domain.IRepository
         Task<List<Marca>> AddMarcas(List<Marca> marcas);
 
         Task<List<Marca>> ObterMarcas();
+
+        Task<Marca> ObterModelos(int codMarca);
     }
 
 

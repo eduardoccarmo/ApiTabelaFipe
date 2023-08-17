@@ -26,21 +26,10 @@ namespace ApiTabelaFipe.Controllers
         }
 
         [HttpGet]
-        [Route("v1/GetMarcasAsync")]
-        public async Task<IActionResult> Teste()
+        [Route("/GetMarcasAsync")]
+        public async Task<IActionResult> GetMarcasAsync()
         {
-            //var marcas = await _httpServiceFipe.ObterTodasAsMarcas();
-
-            //var ret = await _marcaRepository.AddMarcas(marcas);
-
-            //var modelos = await _httpServiceFipe.ObterModeloPorMarca(25);
-
-            var ret2 = await _modeloRepository.ObterModeloPorMarca(25);
-
-            if (ret2 is not null)
-                return Ok(ret2);
-
-            return BadRequest();
+            return Ok();
         }
     }
 }
