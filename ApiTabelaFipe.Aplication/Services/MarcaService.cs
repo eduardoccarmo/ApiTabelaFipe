@@ -24,9 +24,14 @@ namespace ApiTabelaFipe.Aplication.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<Marca>> ObterMarcas()
+        public async Task<List<Marca>> ObterMarcas()
         {
-            throw new NotImplementedException();
+            var marcas = await _marcaRepository.ObterMarcas();
+
+            if (marcas is not null)
+                return marcas;
+
+            return null;
         }
     }
 }

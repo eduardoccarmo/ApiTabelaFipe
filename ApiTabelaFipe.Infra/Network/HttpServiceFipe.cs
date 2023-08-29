@@ -1,5 +1,4 @@
 ﻿using ApiTabelaFipe.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace ApiTabelaFipe.Infra.Network

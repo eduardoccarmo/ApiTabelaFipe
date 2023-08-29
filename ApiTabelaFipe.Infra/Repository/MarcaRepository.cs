@@ -2,6 +2,7 @@
 using ApiTabelaFipe.Domain.Models;
 using ApiTabelaFipe.Infra.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
 
 namespace ApiTabelaFipe.Infra.Repository
 {
@@ -32,22 +33,29 @@ namespace ApiTabelaFipe.Infra.Repository
 
         public async Task<List<Marca>> ObterMarcas()
         {
-            var marcas = await _context
-                               .Marcas
-                               .AsNoTracking()
-                               .ToListAsync();
+            try
+            {
+                var marcas = await _context
+                    .Marcas
+                    .AsNoTracking()
+                    .ToListAsync();
 
-            return marcas; 
+                return marcas;
+            }
+            catch (DbException)
+            {
+                throw new DbUpdateException(message: "Erro ao buscar marcas no bando de dados.");
+            }
         }
 
         public async Task<Object> ObterModelos(int codMarca)
         {
-             var marca =  await _context
-                .Marcas
-                .Include(x => x.Modelos)
-                .Select(x => new {x.Codigo, x.Modelos})
-                .FirstOrDefaultAsync(x => x.Codigo == codMarca);
-           
+            var marca = await _context
+               .Marcas
+               .Include(x => x.Modelos)
+               .Select(x => new { x.Codigo, x.Modelos })
+               .FirstOrDefaultAsync(x => x.Codigo == codMarca);
+
             return marca;
         }
     }
