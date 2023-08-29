@@ -1,8 +1,6 @@
 ﻿using ApiTabelaFipe.Aplication.Interfaces;
 using ApiTabelaFipe.Domain.IRepository;
 using ApiTabelaFipe.Domain.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using System.Xml.Linq;
 
 namespace ApiTabelaFipe.Aplication.Services
 {
@@ -19,16 +17,16 @@ namespace ApiTabelaFipe.Aplication.Services
         {
             return null;
         }
-           
 
-    public Task<List<Marca>> InserirMarcas(List<Marca> marcas)
-    {
-        throw new NotImplementedException();
-    }
 
-    public Task<List<Marca>> ObterMarcas()
-    {
-        throw new NotImplementedException();
+        public Task<List<Marca>> InserirMarcas(List<Marca> marcas)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Marca>> ObterMarcas()
+        {
+            throw new NotImplementedException();
+        }
     }
-}
 }

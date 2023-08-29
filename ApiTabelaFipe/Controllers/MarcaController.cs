@@ -9,29 +9,7 @@ namespace ApiTabelaFipe.Controllers
     [ApiController]
     public class MarcaController : ControllerBase
     {
-        private readonly IHttpServiceFipe _httpServiceFipe;
-        private readonly IMarcaRepository _marcaRepository;
-        private readonly IMarcaService _marcaService;
-        private readonly IModeloRepository _modeloRepository;
 
-        public MarcaController(IHttpServiceFipe httpServiceFipe,
-                               IMarcaRepository marcaRepository,
-                               IMarcaService marcaService,
-                               IModeloRepository modeloRepository)
-        {
-            _httpServiceFipe = httpServiceFipe;
-            _marcaRepository = marcaRepository;
-            _marcaService = marcaService;
-            _modeloRepository = modeloRepository;
-        }
-
-        [HttpGet]
-        [Route("/GetMarcasAsync")]
-        public async Task<IActionResult> GetMarcasAsync()
-        {
-            var ret = await _marcaRepository.ObterModelos(25);
-
-            return Ok(ret);
-        }
     }
 }
+
